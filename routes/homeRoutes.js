@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const pagesController = require("../controllers/pagesController");
+const homeController = require("../controllers/homeController");
 
-router.get("/", pagesController.showHome);
+router.get("/", homeController.showHome);
 
 router.get("*", function (req, res) {
   res.status(404).render("pages/404");
