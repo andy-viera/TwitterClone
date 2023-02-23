@@ -28,5 +28,13 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andy-viera/ejercicio_twitter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andy-viera/ejercicio_twitter/issues"
+  },
+  "homepage": "https://github.com/andy-viera/ejercicio_twitter#readme"
 }
