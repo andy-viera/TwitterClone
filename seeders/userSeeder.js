@@ -1,3 +1,5 @@
+// seeders/userSeeder.js
+
 const { faker } = require("@faker-js/faker");
 const User = require("../models/User");
 
@@ -6,7 +8,7 @@ faker.locale = "en";
 module.exports = async () => {
   const users = [];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 10; i++) {
     users.push(
       new User({
         firstname: faker.name.firstName(),
@@ -20,21 +22,18 @@ module.exports = async () => {
   }
 
   for (const user of users) {
-    const followingCount = Math.floor(Math.random() * (users.length - 1)); // randomly select a number of users to follow between 0 and the number of users minus 1
-    const followingSet = new Set(); // create a set to keep track of users already being followed
-
-    while (followingSet.size < followingCount) {
-      const randomUserIndex = Math.floor(Math.random() * users.length); // randomly select a user index
-
-      if (randomUserIndex !== users.indexOf(user) && !followingSet.has(randomUserIndex)) {
-        // ensure not following itself or a user that is already being followed
-        const randomUser = users[randomUserIndex];
-        user.following.push(randomUser._id); // add user to the following list
-        randomUser.followers.push(user._id); // add the user to the followers list of the user being followed
-        followingSet.add(randomUserIndex); // add user index to the set of users being followed
+    const randomFollowAmount = faker.datatype.number({ min: 0, max: users.length });
+    for (let i = 0; i < randomFollowAmount; i++) {
+      const randomUser = users[faker.datatype.number({ min: 0, max: users.length - 1 })];
+      if (
+        users.indexOf(randomUser) !== users.indexOf(user) &&
+        !user.following.includes(randomUser._id)
+      ) {
+        user.following.push(randomUser._id);
+        randomUser.followers.push(user._id);
+        await randomUser.save();
       }
     }
-
     await user.save();
   }
 };

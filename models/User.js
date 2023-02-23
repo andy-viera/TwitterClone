@@ -7,7 +7,7 @@ const userSchema = new Schema({
   email: String,
   biography: String,
   image: String,
-  tweetslist: [
+  tweetlist: [
     {
       type: Schema.Types.ObjectId,
       ref: "Tweet",

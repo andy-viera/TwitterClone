@@ -8,19 +8,18 @@ module.exports = async () => {
   const tweets = [];
 
   for (let i = 0; i < 100; i++) {
-    const randomUser = User.findOne().skip(math.random());
-    tweets.push(
-      new Tweet({
-        content: faker.lorem.paragraph({ min: 1, max: 4 }),
-        author: randomUser._id,
-        likes: faker.dataType.number({ min: 0, max: 10 }),
-      }),
-    );
+    const randomUser = await User.findOne().skip(faker.datatype.number({ min: 0, max: 9 }));
 
-    randomUser.tweetlist.push(tweets);
+    const tweet = new Tweet({
+      content: faker.lorem.paragraph({ min: 1, max: 4 }),
+      author: randomUser,
+      likes: randomUser,
+    });
 
+    tweets.push(tweet);
+    randomUser.tweetlist.push(tweet);
     await randomUser.save();
   }
 
-  await Tweets.insertMany(tweets);
+  await Tweet.insertMany(tweets);
 };
