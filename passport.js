@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const User = require("./models/User");
 
 module.exports = (app) => {
   app.use(passport.session());
@@ -15,6 +16,18 @@ module.exports = (app) => {
         console.log("[LocalStrategy] Username:", username); // To-Do: Borrar este `console.log` luego de hacer pruebas.
         console.log("[LocalStrategy] Password:", password); // To-Do: Borrar este `console.log` luego de hacer pruebas.
         // Completar código...
+
+        try {
+          // Buscar en la BDD el usuario que se quiere conectar...
+          const user = await User.findOne({ where: { email: username } });
+          console.log(user);
+          //
+          //
+          //
+          //
+        } catch (error) {
+          return cb(error);
+        }
       },
     ),
   );
