@@ -5,6 +5,7 @@
   </head>
 
   <body>
+    <!--http://localhost:3000/followers/63f8c0cf1a6456da9440185c-->
     <div class="container-fluid">
       <div class="row subContainer">
         <!--Comienzo partial izquierdo-->
@@ -33,24 +34,12 @@
         <!--Fin partial izquierdo-->
         <div class="col-4 central-box overflow-auto">
           <div class="row new-tweet-box">
-            <div class="col-12"><h1 class="title-tweet-box mt-3 mb-3">Home</h1></div>
             <div class="col-2">
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                alt=""
-                class="img-tweet-box-user"
-              />
+              <i class="fa-sharp fa-solid fa-arrow-left"></i>
             </div>
             <div class="col-8">
-              <textarea
-                name=""
-                id=""
-                cols="40"
-                rows="2"
-                style="border: none"
-                placeholder="What's happening?"
-                class="mt-2"
-              ></textarea>
+              <h1 class="follower-name"><%=followers.firstname%> <%= followers.lastname%></h1>
+              <h2 class="follower-username">@<%= followers.username%></h2>
             </div>
             <div class="col-12 mt-3 d-flex">
               <button class="btn btn-primary btn-hardcore mb-3 ms-auto" href="/" role="button">
@@ -58,26 +47,24 @@
               </button>
             </div>
           </div>
-          <% for (const tweet of tweets) { %>
+
           <div class="row tweet-list mt-3">
             <div class="col-2">
-              <img src="<%= tweet.author.image %>" alt="" class="img-hardcore" />
+              <img src="" alt="" class="img-hardcore" />
             </div>
 
             <div class="col-10">
-              <h4 class="d-inline follow-content follow-title">
-                <%= tweet.author.firstname%> <%= tweet.author.lastname %>
-              </h4>
-              <h4 class="d-inline follow-content follow-subtitle">@<%= tweet.author.username%></h4>
-              <p class="tweet-content"><%= tweet.content %></p>
+              <h4 class="d-inline follow-content follow-title"></h4>
+              <h4 class="d-inline follow-content follow-subtitle">@</h4>
+              <p class="tweet-content"></p>
               <section class="mb-3">
                 <i class="fa-solid fa-heart heart-likes"></i
-                ><small class="ms-2 number-likes"><%= tweet.likes.length %></small>
+                ><small class="ms-2 number-likes"></small>
               </section>
             </div>
           </div>
-          <% } %>
         </div>
+
         <!--Comienzo partial derecho-->
         <div class="col-4 right-partial">
           <div class="row">

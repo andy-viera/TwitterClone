@@ -54,7 +54,11 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 // Otros handlers...
-// ...
+async function showFollowers(req, res) {
+  const id = req.params.id;
+  const followers = await User.findById(id);
+  res.render("pages/followers", { followers });
+}
 
 module.exports = {
   register,
@@ -65,4 +69,5 @@ module.exports = {
   edit,
   update,
   destroy,
+  showFollowers,
 };
