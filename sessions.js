@@ -1,8 +1,8 @@
 const session = require("express-session");
 const flash = require("express-flash");
 
-module.exports = (app) => {
-  app.use(
+module.exports = (appAsAParam) => {
+  appAsAParam.use(
     session({
       secret: process.env.SESSION_SECRET,
       resave: false,
@@ -16,5 +16,5 @@ module.exports = (app) => {
     }),
   );
 
-  app.use(flash());
+  appAsAParam.use(flash());
 };

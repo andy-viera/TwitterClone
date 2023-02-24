@@ -1,3 +1,5 @@
+const passport = require("passport");
+
 // Display a listing of the resource.
 async function index(req, res) {}
 
@@ -26,10 +28,10 @@ async function showLogin(req, res) {
   res.render("./pages/login");
 }
 
-async function login(req, res) {
-  console.log(req.body);
-  res.redirect("/");
-}
+const login = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+});
 
 module.exports = {
   index,

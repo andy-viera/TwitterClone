@@ -1,6 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const { User } = require("./models/User");
+const User = require("./models/User");
+const bcrypt = require("bcryptjs");
 
 module.exports = (app) => {
   app.use(passport.session());
@@ -11,12 +12,13 @@ module.exports = (app) => {
         usernameField: "email",
         passwordField: "password",
       },
-      async function (username, password, cb) {
+      async function (email, password, cb) {
         try {
-          const user = await User.findOne({ where: { email: username } });
-          const passwordIngresado = req.body.password;
+          console.log(email, password);
+          const user = await User.findOne({ email });
+          const passwordIngresado = password;
           const hashAlmacenado = user.password;
-          const chequeoPassword = bcrypt.compare(passwordIngresado, hashAlmacenado);
+          const chequeoPassword = await bcrypt.compare(passwordIngresado, hashAlmacenado);
 
           if (!user) {
             console.log("El nombre del usuario no existe");
@@ -35,13 +37,16 @@ module.exports = (app) => {
     ),
   );
 
-  passport.serializeUser((user, done) => {
-    console.log("[Passport] Serialize User");
-    // Completar código...
+  passport.serializeUser((user, cb) => {
+    cb(null, user._id);
   });
 
-  passport.deserializeUser(async (id, done) => {
-    console.log("[Passport] Deserialize User");
-    // Completar código...
+  passport.deserializeUser(async (id, cb) => {
+    try {
+      const user = await User.findById(id);
+      return cb(null, user);
+    } catch (err) {
+      cb(err);
+    }
   });
 };
