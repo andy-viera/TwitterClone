@@ -18,7 +18,7 @@ module.exports = async () => {
     const randomUser = await User.findOne().skip(faker.datatype.number({ min: 0, max: 9 }));
 
     const tweet = new Tweet({
-      content: faker.lorem.paragraph({ min: 1, max: 4 }),
+      content: faker.lorem.paragraphs(faker.datatype.number({ min: 1, max: 4 })),
       author: randomUser,
       likes: randomUserlikesArray,
     });

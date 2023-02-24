@@ -1,3 +1,5 @@
+const Tweet = require("../models/Tweet");
+const User = require("../models/User");
 /**
  * Este archivo se utiliza en un proyecto donde se está utlizando server-side
  * rendering (ej: con un motor de templates como EJS). Tiene como objetivo
@@ -15,9 +17,11 @@
  * En caso de estar creando una API, este controlador carece de sentido y
  * no debería existir.
  */
+// Display a listing of the resource.
 
 async function showHome(req, res) {
-  res.render("pages/home");
+  const tweets = await Tweet.find().populate("author");
+  res.render("pages/home", { tweets });
 }
 
 async function showContact(req, res) {
