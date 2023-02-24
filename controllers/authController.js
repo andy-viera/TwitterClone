@@ -22,6 +22,15 @@ async function destroy(req, res) {}
 // Otros handlers...
 // ...
 
+async function showLogin(req, res) {
+  res.render("./pages/login");
+}
+
+async function login(req, res) {
+  console.log(req.body);
+  res.redirect("/");
+}
+
 module.exports = {
   index,
   show,
@@ -30,4 +39,6 @@ module.exports = {
   edit,
   update,
   destroy,
+  showLogin,
+  login,
 };

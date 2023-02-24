@@ -8,4 +8,8 @@ const authController = require("../controllers/authController");
  * autenticación. Ejemplos: "/login" y "/logout".
  */
 
+router.get("/login", authController.showLogin);
+
+router.post("/login", authController.login);
+
 module.exports = router;

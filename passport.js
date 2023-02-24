@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const { User } = require("./models/User");
 
 module.exports = (app) => {
   app.use(passport.session());
@@ -11,10 +12,25 @@ module.exports = (app) => {
         passwordField: "password",
       },
       async function (username, password, cb) {
-        // Este código sólo se llama si username y password están definidos.
-        console.log("[LocalStrategy] Username:", username); // To-Do: Borrar este `console.log` luego de hacer pruebas.
-        console.log("[LocalStrategy] Password:", password); // To-Do: Borrar este `console.log` luego de hacer pruebas.
-        // Completar código...
+        try {
+          const user = await User.findOne({ where: { email: username } });
+          const passwordIngresado = req.body.password;
+          const hashAlmacenado = user.password;
+          const chequeoPassword = bcrypt.compare(passwordIngresado, hashAlmacenado);
+
+          if (!user) {
+            console.log("El nombre del usuario no existe");
+            return cb(null, false, { message: "Credenciales incorrectas" });
+          }
+          if (!chequeoPassword) {
+            console.log("La contraseña no es correcta");
+            return cb(null, false, { message: "Credenciales incorrectas" });
+          }
+          console.log("Credenciales verificadas correctamente");
+          return cb(null, user);
+        } catch (error) {
+          cb(error);
+        }
       },
     ),
   );
