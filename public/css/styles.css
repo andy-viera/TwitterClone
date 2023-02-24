@@ -29,6 +29,35 @@
   align-self: flex-end;
 }
 
+.profile-main-section {
+  height: 45%;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.profile-banner {
+  height: 50%;
+}
+
+.profile-info {
+  height: 50%;
+}
+
+.profile-info .profile-info-subcontainer-right {
+  position: relative;
+}
+
+.profile-info .profile-info-subcontainer-left {
+  position: relative;
+  right: -3%;
+}
+
+.profile-photo {
+  width: 60%;
+  position: absolute;
+  top: -55%;
+}
+
 @media only screen and (max-width: 1000px) {
   .register-form-column {
     padding: 1.2rem 1.8rem 1.2rem 1.8rem !important;

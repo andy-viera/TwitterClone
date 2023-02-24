@@ -6,10 +6,7 @@
 body {
   background-color: #ffffff;
 }
-.subContainer {
-  height: 100vh;
-  width: 100vw;
-}
+
 .twitterSimbol {
   color: #1d9bf0;
 }
@@ -27,15 +24,33 @@ body {
 }
 
 .left-partial {
+  position: fixed;
+  left: 3vw;
+  top: 0;
   height: 100vh;
 }
 .right-partial {
+  position: fixed;
+  right: 3vw;
+  top: 0;
   height: 100vh;
 }
 
 .central-box {
-  height: 100vh;
-  border: 0.5px solid #f3f3f3;
+  height: fit-content;
+  margin: 0rem 20vw 0rem 28vw;
+  border: 1px solid #f3f3f3;
+}
+
+.home-central-navbar {
+  position: sticky;
+  top: 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 7vh;
+  border-bottom: 1px solid #f3f3f3;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .news-box {
@@ -60,12 +75,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.img-hardcore {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-}
-
 .follow-box {
   background-color: #f7f9f9;
   border-radius: 15px;
@@ -79,40 +88,48 @@ body {
 
 .follow-title {
   color: black;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .follow-subtitle {
-  color: #647788;
+  font-size: 0.9rem;
 }
+
 .btn-hardcore {
-  border-radius: 45px;
   width: 75px;
   height: 35px;
   background-color: #1d9bf0;
   color: white;
   border-color: #1d9bf0;
-  font-size: 15px;
+  font-size: 0.85rem;
 }
 
 .new-tweet-box,
 .tweet-list {
   border-bottom: 1px solid #f3f3f3;
 }
-.new-tweet-box {
-  position: sticky;
-  top: 0;
-  background-color: white;
-}
 
 .title-tweet-box {
   font-size: 1.2rem;
 }
 
-.img-tweet-box-user {
-  width: 100%;
-  border-radius: 50%;
+.tweet-content {
+  font-size: 0.9rem;
 }
+
+.image-hardcode-create {
+  width: 70%;
+}
+
+.image-hardcore-aside {
+  width: 40px;
+  height: 40px;
+}
+
+.home-tweet-profile-img {
+  width: 60%;
+}
+
 .heart-likes,
 .number-likes {
   color: #f91894;

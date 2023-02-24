@@ -24,6 +24,10 @@ async function showHome(req, res) {
   res.render("pages/home", { tweets });
 }
 
+async function showProfile(req, res) {
+  res.render("pages/profile");
+}
+
 async function showContact(req, res) {
   res.render("pages/contact");
 }
@@ -41,6 +45,7 @@ async function show404(req, res) {
 
 module.exports = {
   showHome,
+  showProfile,
   showContact,
   showAboutUs,
 };

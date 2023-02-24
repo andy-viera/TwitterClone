@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/meta") %>
+    <title>Profile | Twitter Clone</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row subContainer mx-auto gx-4">
+          <%- include("../partials/leftpartial") %>
+          <div class="col-6 h-100 px-0">
+            <div class="d-flex flex-column profile-main-section">
+                <div class="w-100 background-color-twitter profile-banner"></div>
+                <div class="row w-100 profile-info px-3">
+                    <div class="col-5 profile-info-subcontainer-right">
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="profile-photo rounded-circle" alt="Profile photo">
+                        <div class="position-absolute bottom-0">
+                            <h2 class="fs-4 mb-1">Firstname Lastname</h2>
+                            <h4 class="follow-subtitle fw-light">@NombreUsuario</h4>
+                        </div>
+                    </div>
+                    <div class="col-7 pt-3 profile-info-subcontainer-left">
+                        <div class="d-flex flex-column align-items-end h-100">
+                            <a class="btn btn-primary btn-hardcore rounded-pill " href="#" role="button">Follow</a>
+                            <div class="mt-auto">
+                                <a class="text-black text-decoration-none me-3 small-text" href="#"><span class="fw-bold me-2">19</span>Following</a> <a class="text-black text-decoration-none small-text" href="#"><span class="fw-bold me-2">123</span>Followers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row tweet-list mt-3">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="rounded-circle image-hardcode-feed"
+                  />
+                </div>
+                <div class="col-10">
+                  <h4 class="d-inline follow-content follow-title">Nombre y Apellido</h4>
+                  <h4 class="d-inline follow-content follow-subtitle fw-light">@NombreUsuario</h4>
+                  <p class="tweet-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium perferendis
+                    sunt iure debitis laborum? Dignissimos, et aliquam? Labore autem obcaecati hic modi
+                    saepe placeat dolorem esse nulla et ipsum! Suscipit.
+                  </p>
+                  <section class="mb-3">
+                    <i class="fa-solid fa-heart heart-likes"></i
+                    ><small class="ms-2 number-likes">3</small>
+                  </section>
+                </div>
+              </div>
+          </div>
+          <%- include("../partials/rigthpartial") %>
+        </div>
+    </div>
+    <%- include("../partials/script") %>
+</body>
+</html>
