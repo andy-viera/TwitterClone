@@ -1,1 +1,42 @@
-/* Colocar aquí CSS "propio". */
+.register-background {
+  background-color: #074874;
+}
+
+.register-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.background-color-twitter {
+  background-color: #1d9bf0;
+}
+
+.submitBtn:hover {
+  background-color: #1884cd;
+}
+
+.small-text {
+  font-size: 0.95rem;
+}
+
+.background-color-twitter i.bi-twitter {
+  align-self: flex-start;
+}
+
+.background-color-twitter h2 {
+  align-self: flex-end;
+}
+
+@media only screen and (max-width: 1000px) {
+  .register-form-column {
+    padding: 1.2rem 1.8rem 1.2rem 1.8rem !important;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .register-form-column {
+    padding: 2rem 1.8rem 2rem 1.8rem !important;
+  }
+}

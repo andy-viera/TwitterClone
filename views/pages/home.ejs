@@ -5,15 +5,195 @@
   </head>
 
   <body>
-    <div class="container">
-      <h1 class="my-4">Página de inicio</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+    <div class="container-fluid">
+      <div class="row subContainer">
+        <!--Comienzo partial izquierdo-->
+        <div class="col-4 left-partial">
+          <div class="row">
+            <div class="col-6">aca iria otra cosa</div>
+            <div class="col-5 d-flex flex-column" style="height: 100vh">
+              <div class="row mt-2"><i class="fab fa-twitter twitterSimbol"></i></div>
+              <div class="row mt-4">
+                <i class="fa-solid fa-house"> <small class="ms-2">Home</small></i>
+              </div>
+              <div class="row mt-4">
+                <i class="fa-regular fa-user"><small class="ms-3">Profile</small></i>
+              </div>
+              <div class="row mt-4">
+                <a class="btn btn-primary btn-home" href="/" role="button">Tweet</a>
+              </div>
+              <div class="row mt-auto mb-4">
+                <a class="btn btn-secondary btn-logout mt-auto" href="/" role="button">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fin partial izquierdo-->
+        <div class="col-4 central-box">
+          <div class="row new-tweet-box">
+            <div class="col-12"><h1 class="title-tweet-box mt-3 mb-3">Home</h1></div>
+            <div class="col-2">
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt=""
+                class="img-tweet-box-user"
+              />
+            </div>
+            <div class="col-8">
+              <textarea
+                name=""
+                id=""
+                cols="40"
+                rows="2"
+                style="border: none"
+                placeholder="What's happening?"
+                class="mt-2"
+              ></textarea>
+            </div>
+            <div class="col-12 mt-3 d-flex">
+              <button class="btn btn-primary btn-hardcore mb-3 ms-auto" href="/" role="button">
+                Tweet
+              </button>
+            </div>
+          </div>
+          <div class="row tweet-list mt-3">
+            <div class="col-2">
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt=""
+                class="img-hardcore"
+              />
+            </div>
+            <div class="col-10">
+              <h4 class="d-inline follow-content follow-title">Nombre y Apellido</h4>
+              <h4 class="d-inline follow-content follow-subtitle">@NombreUsuario</h4>
+              <p class="tweet-content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium perferendis
+                sunt iure debitis laborum? Dignissimos, et aliquam? Labore autem obcaecati hic modi
+                saepe placeat dolorem esse nulla et ipsum! Suscipit.
+              </p>
+              <section class="mb-3">
+                <i class="fa-solid fa-heart heart-likes"></i
+                ><small class="ms-2 number-likes">number of likes</small>
+              </section>
+            </div>
+          </div>
+        </div>
+        <!--Comienzo partial derecho-->
+        <div class="col-4 right-partial">
+          <div class="row">
+            <div class="col-8 news-box ms-4 mt-3">
+              <h3 class="news-box-title mt-3">What's happening</h3>
+              <div class="flex-column">
+                <small class="d-block mt-3 news-box-p1">Programming - Trending</small>
+                <small class="d-block news-box-p2">#MongoVsSequelize</small>
+                <small class="d-block news-box-p1">97.5K Tweets</small>
+              </div>
+              <div>
+                <small class="d-block mt-3 news-box-p1">Entertainment - Trending</small>
+                <small class="d-block news-box-p2">#StarWars</small>
+                <small class="d-block news-box-p1">97.5K Tweets</small>
+              </div>
+              <div class="mb-3">
+                <small class="d-block mt-3 news-box-p1">News - Trending</small>
+                <small class="d-block news-box-p2">#LifeInMars</small>
+                <small class="d-block news-box-p1">97.5K Tweets</small>
+              </div>
+            </div>
+
+            <div class="col-8 follow-box ms-4 mt-3">
+              <h3 class="news-box-title mt-3">Who to follow</h3>
+              <div class="row mt-2">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="img-hardcore"
+                  />
+                </div>
+                <div class="col-6 ms-2">
+                  <h4 class="follow-content follow-title mb-0 mt-1">Hack Academy</h4>
+                  <h4 class="follow-content follow-subtitle mt-0">@HackAcademyDev</h4>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-primary btn-hardcore" href="/" role="button">
+                    Follow
+                  </button>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="img-hardcore"
+                  />
+                </div>
+                <div class="col-6 ms-2">
+                  <h4 class="follow-content follow-title mb-0 mt-1">Java Script</h4>
+                  <h4 class="follow-content follow-subtitle mt-0">@JavaScript</h4>
+                </div>
+                <div class="col-3">
+                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="img-hardcore"
+                  />
+                </div>
+                <div class="col-6 ms-2">
+                  <h4 class="follow-content follow-title mb-0 mt-1">MongoDB</h4>
+                  <h4 class="follow-content follow-subtitle mt-0">@MongoDB</h4>
+                </div>
+                <div class="col-3">
+                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="img-hardcore"
+                  />
+                </div>
+                <div class="col-6 ms-2">
+                  <h4 class="follow-content follow-title mb-0 mt-1">NodeJs</h4>
+                  <h4 class="follow-content follow-subtitle mt-0">@NodeJs</h4>
+                </div>
+                <div class="col-3">
+                  <a class="btn btn-primary btn-hardcore text-center" href="/" role="button"
+                    >Follow</a
+                  >
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    class="img-hardcore"
+                  />
+                </div>
+                <div class="col-6 ms-2 mb-3">
+                  <h4 class="follow-content follow-title mb-0 mt-1">MDN Web Docs</h4>
+                  <h4 class="follow-content follow-subtitle mt-0">@MDN Web Docs</h4>
+                </div>
+                <div class="col-3">
+                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fin partial derecho-->
+      </div>
     </div>
+
+    <script src="https://kit.fontawesome.com/0f587675ba.js" crossorigin="anonymous"></script>
   </body>
 </html>
