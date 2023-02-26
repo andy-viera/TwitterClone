@@ -5,10 +5,11 @@
   </head>
 
   <body>
+    <!-- http://localhost:3000/profile/Sharon45/followers-->
     <div class="container-fluid">
       <div class="row subContainer">
         <%- include("../partials/leftpartial") %>
-        <div class="col-7 followlist-central-box">
+        <div class="col-4 followlist-central-box">
           <div class="row new-tweet-box">
             <div class="col-1 mt-4">
               <a href="/profile/<%=userFollowers.username%>" class="text-black"><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
@@ -31,7 +32,7 @@
               <div class="col-2 text-center">
                 <img src="<%= follower.image %>" alt="" class="rounded-circle follow-tweet-profile-img" />
               </div>
-              <div class="col-7">
+              <div class="col-6">
                 <h4 class="follow-content follow-title"><%= follower.firstname %></h4>
                 <h4 class="follow-content follow-subtitle text-secondary fw-light">@<%= follower.username %></h4>
                 <p class="tweet-content"></p>

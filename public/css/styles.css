@@ -77,21 +77,21 @@ body {
 }
 
 .left-partial {
-  position: fixed;
-  left: 3vw;
+  position: sticky;
+  border-right: 0.5px solid #f3f3f3;
   top: 0;
   height: 100vh;
 }
 .right-partial {
-  position: fixed;
-  right: 3vw;
+  position: sticky;
+  border-left: 0.5px solid #f3f3f3;
   top: 0;
   height: 100vh;
 }
 
 .central-box {
   height: fit-content;
-  margin: 0rem 20vw 0rem 28vw;
+
   border: 1px solid #f3f3f3;
 }
 
@@ -199,13 +199,6 @@ body {
   border-bottom: 1px solid #f3f3f3;
 }
 
-.profile-central-box {
-  height: fit-content;
-  width: 40vw;
-  margin: 0rem 20vw 0rem 26vw;
-  border: 1px solid #f3f3f3;
-}
-
 .profile-banner {
   height: 50%;
 }
@@ -242,12 +235,12 @@ body {
 
 /* followers/following styles */
 
-.followlist-central-box {
+/*.followlist-central-box {
   height: fit-content;
   width: 40vw;
   margin: 0rem 20vw 0rem 26vw;
   border: 1px solid #f3f3f3;
-}
+}*/
 
 .follow-tweet-profile-img {
   width: 70%;
