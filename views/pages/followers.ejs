@@ -7,9 +7,9 @@
   <body>
     <!-- http://localhost:3000/profile/Sharon45/followers-->
     <div class="container-fluid">
-      <div class="row subContainer">
+      <div class="row subContainer gx-5">
         <%- include("../partials/leftpartial") %>
-        <div class="col-4 followlist-central-box">
+        <div class="col-5 followlist-central-box">
           <div class="row new-tweet-box">
             <div class="col-1 mt-4">
               <a href="/profile/<%=userFollowers.username%>" class="text-black"><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
@@ -20,8 +20,9 @@
               </h1>
               <h2 class="follower-username fw-light text-secondary">@<%= userFollowers.username%></h2>
             </div>
-            <div class="col-6 mt-3 text-center mb-3">
+            <div class="col-6 mt-3 text-center mb-3 position-relative">
               <a class="link-follow" href="/profile/<%=userFollowers.username%>/followers">Followers</a>
+              <span class="active-section-border-follow"></span>
             </div>
             <div class="col-6 mt-3 text-center mb-3">
               <a class="link-follow" href="/profile/<%=userFollowers.username%>/following">Following</a>
@@ -38,9 +39,15 @@
                 <p class="tweet-content"></p>
               </div>
               <div class="col-2">
-                <button class="btn follow-btn-medium text-white rounded-pill mt-2 ms-3" href="/" role="button">
-                  Follow
-                </button>
+                <% if(user.following.includes(follower._id)) {%>
+                <a href="/<%= follower._id %>/follow" class="text-decoration-none text-black btn following-btn-medium text-black rounded-pill mt-2 ms-3">
+                  Following
+                </a>
+                <% } else { %>
+                  <a href="/<%= follower._id %>/follow" class="text-decoration-none text-black btn follow-btn-medium text-white rounded-pill mt-2 ms-3">
+                    Follow
+                  </a>
+                  <% } %>
               </div>
             </div>
           <% } %>

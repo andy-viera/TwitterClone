@@ -15,14 +15,14 @@ module.exports = (app) => {
       async function (email, password, cb) {
         try {
           const user = await User.findOne({ email });
-          const passwordIngresado = password;
-          const hashAlmacenado = user.password;
-          const chequeoPassword = await bcrypt.compare(passwordIngresado, hashAlmacenado);
-
           if (!user) {
             console.log("El nombre del usuario no existe");
             return cb(null, false, { message: "Credenciales incorrectas" });
           }
+          const passwordIngresado = password;
+          const hashAlmacenado = user.password;
+          const chequeoPassword = await bcrypt.compare(passwordIngresado, hashAlmacenado);
+
           if (!chequeoPassword) {
             console.log("La contraseña no es correcta");
             return cb(null, false, { message: "Credenciales incorrectas" });

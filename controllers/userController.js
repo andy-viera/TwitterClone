@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Tweet = require("../models/Tweet");
 const formidable = require("formidable");
 const bcrypt = require("bcryptjs");
 
@@ -34,25 +35,45 @@ async function store(req, res) {
   });
 }
 
-// Display a listing of the resource.
-async function index(req, res) {}
+async function like(req, res) {
+  const tweetId = req.params.tweetid;
+  const loggedUserId = req.user._id;
+  const tweet = await Tweet.findById(tweetId);
+  const likes = tweet.likes;
+  const likeIndex = likes.indexOf(loggedUserId);
+  if (likeIndex === -1) {
+    // loggedUserId is not in the likes array, so add it
+    likes.push(loggedUserId);
+  } else {
+    // loggedUserId is in the likes array, so remove it
+    likes.splice(likeIndex, 1);
+  }
+  await tweet.save();
+  res.redirect(req.headers.referer || "/");
+}
 
-// Display the specified resource.
-async function show(req, res) {}
+async function follow(req, res) {
+  const userId = req.params.userid;
+  const loggedUserId = req.user._id;
+  const user = await User.findById(userId);
+  const followers = user.followers;
+  const following = req.user.following;
+  const followerIndex = followers.indexOf(loggedUserId);
+  const followingIndex = following.indexOf(userId);
 
-// Show the form for creating a new resource
-async function create(req, res) {}
+  if (followerIndex === -1) {
+    followers.push(loggedUserId);
+    following.push(userId);
+  } else {
+    followers.splice(followerIndex, 1);
+    following.splice(followingIndex, 1);
+  }
+  await user.save();
+  await req.user.save();
 
-// Show the form for editing the specified resource.
-async function edit(req, res) {}
+  res.redirect(req.headers.referer || "/");
+}
 
-// Update the specified resource in storage.
-async function update(req, res) {}
-
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
-
-// Otros handlers...
 async function showFollowers(req, res) {
   const username = req.params.username;
   const userFollowers = await User.findOne({ username }).populate("followers");
@@ -67,13 +88,9 @@ async function showFollowing(req, res) {
 
 module.exports = {
   register,
-  index,
-  show,
-  create,
   store,
-  edit,
-  update,
-  destroy,
+  like,
+  follow,
   showFollowers,
   showFollowing,
 };

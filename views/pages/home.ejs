@@ -6,9 +6,9 @@
   </head>
   
   <body>
-      <div class="row ">
+      <div class="row gx-5">
         <%- include("../partials/leftpartial") %>
-        <div class="col-4 central-box">
+        <div class="col-5 central-box">
           <div class="home-central-navbar">
             <h1 class="title-tweet-box">Home</h1>
           </div>
@@ -44,18 +44,31 @@
           <% for (const tweet of tweets) { %>
               <div class="row tweet-list mt-3 gx-0">
                 <div class="col-2 d-flex justify-content-center h-25">
-                  <img src="<%= tweet.author.image %>" alt="Profile image" class="rounded-circle home-tweet-profile-img" />
+                  <a href="/profile/<%= tweet.author.username %>">
+                    <img src="<%= tweet.author.image %>" alt="Profile image" class="rounded-circle home-tweet-profile-img" />
+                  </a>
                 </div>
 
                 <div class="col-10">
                   <h4 class="d-inline follow-content follow-title">
-                    <%= tweet.author.firstname%> <%= tweet.author.lastname %>
+                    <a href="/profile/<%= tweet.author.username %>" class="text-decoration-none text-black">
+                      <%= tweet.author.firstname%> <%= tweet.author.lastname %>
+                    </a>
                   </h4>
                   <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= tweet.author.username%></h4>
-                  <p class="tweet-content"><%= tweet.content %></p>
+                  <p class="tweet-content"><%= tweet.content %></p>                  
                   <section class="mb-3">
-                    <i class="fa-solid fa-heart heart-likes"></i
-                    ><small class="ms-2 number-likes"><%= tweet.likes.length %></small>
+                    <% if(tweet.likes.includes(user._id)) {%>
+                    <a href="/<%= tweet._id %>/like" class="text-decoration-none text-black">
+                      <i class="bi bi-heart-fill heart-likes"></i>
+                      <small class="ms-2 number-likes"><%= tweet.likes.length %></small>
+                    </a>
+                    <% } else {%>
+                      <a href="/<%= tweet._id %>/like" class="text-decoration-none text-black">
+                        <i class="bi bi-heart"></i>
+                        <small class="ms-2"><%= tweet.likes.length %></small>
+                      </a>
+                      <% } %>
                   </section>
                 </div>
               </div>

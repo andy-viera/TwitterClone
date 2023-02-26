@@ -189,13 +189,13 @@ body {
 .heart-likes,
 .number-likes {
   color: #f91894;
+  transition: color 0.2s ease-in-out;
 }
 
 /* profile styles */
 
 .profile-main-section {
   height: 45vh;
-  padding-bottom: 4rem;
   border-bottom: 1px solid #f3f3f3;
 }
 
@@ -207,11 +207,11 @@ body {
   height: 50%;
 }
 
-.profile-info .profile-info-subcontainer-right {
+.profile-info .profile-info-subcontainer-left {
   position: relative;
 }
 
-.profile-info .profile-info-subcontainer-left {
+.profile-info .profile-info-subcontainer-right {
   position: relative;
   right: -3%;
 }
@@ -220,17 +220,24 @@ body {
   width: 60%;
   max-height: 100%;
   position: absolute;
-  top: -55%;
+  top: -45%;
 }
 
 .follow-btn-medium {
-  width: 6.5rem;
+  width: 6rem;
   background-color: #1d9bf0;
-  font-size: 0.85rem;
+  font-size: 0.98rem;
 }
 
 .follow-btn-medium:hover {
   background-color: #1884cd;
+}
+
+.following-btn-medium {
+  width: 6rem;
+  background-color: #ffffff;
+  border: #e8e8e8 1px solid;
+  font-size: 0.98rem;
 }
 
 /* followers/following styles */
@@ -259,4 +266,17 @@ body {
   font-weight: bold;
   text-decoration: none;
   font-size: 1rem;
+}
+
+.active-section-border-follow {
+  position: absolute;
+  border-bottom: #1d9bf0 3.5px solid;
+  width: 27%;
+  bottom: -68%;
+  left: 37%;
+}
+
+.active-section-border-tweet {
+  border-bottom: #1d9bf0 3.5px solid;
+  width: 24%;
 }
