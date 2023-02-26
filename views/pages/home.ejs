@@ -10,12 +10,16 @@
         <%- include("../partials/leftpartial") %>
         <div class="col-5 central-box">
           <div class="home-central-navbar">
-            <h1 class="title-tweet-box mt-3 mb-3">Home</h1>
+            <h1 class="title-tweet-box">Home</h1>
           </div>
           <div class="row tweet-list">
-            <div class="col-2">
+            <div class="col-2 text-center">
               <img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              <% if (user.image.includes("http")) {%>
+                src="<%= user.image %>"
+                <% } else {%>
+                  src="/img/<%= user.image %>"
+                  <% } %>
                 alt=""
                 class="rounded-circle image-hardcode-create"
               />
@@ -32,7 +36,7 @@
               ></textarea>
             </div>
             <div class="col-12 mt-3 d-flex">
-              <button class="btn btn-primary btn-hardcore rounded-pill mb-3 ms-auto" href="/" role="button">
+              <button class="btn btn-hardcode text-white rounded-pill mb-3 ms-auto" href="/" role="button">
                 Tweet
               </button>
             </div>
@@ -63,3 +67,5 @@
     <%- include("../partials/script") %>
   </body>
 </html>
+
+

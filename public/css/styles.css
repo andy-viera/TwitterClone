@@ -1,3 +1,5 @@
+/* register & login styles */
+
 .register-background {
   background-color: #074874;
 }
@@ -29,10 +31,179 @@
   align-self: flex-end;
 }
 
+@media only screen and (max-width: 1000px) {
+  .register-form-column {
+    padding: 1.2rem 1.8rem 1.2rem 1.8rem !important;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .register-form-column {
+    padding: 2rem 1.8rem 2rem 1.8rem !important;
+  }
+}
+
+/* home styles */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.twitterSimbol {
+  color: #1d9bf0;
+}
+.btn-home {
+  background-color: #1d9bf0;
+}
+
+.btn-home:hover {
+  background-color: #1884cd;
+}
+
+.btn-logout {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+  border-radius: 15px;
+}
+
+.btn-logout:hover {
+  background-color: #b82736;
+}
+
+.left-partial {
+  position: fixed;
+  left: 3vw;
+  top: 0;
+  height: 100vh;
+}
+.right-partial {
+  position: fixed;
+  right: 3vw;
+  top: 0;
+  height: 100vh;
+}
+
+.central-box {
+  height: fit-content;
+  margin: 0rem 20vw 0rem 28vw;
+  border: 1px solid #f3f3f3;
+}
+
+.home-central-navbar {
+  position: sticky;
+  top: 0;
+  padding: 0.8rem 0rem 0.5rem 0rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 7vh;
+  border-bottom: 1px solid #f3f3f3;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.news-box {
+  background-color: #f7f9f9;
+  border-radius: 15px;
+  border: 1px solid #f7f9f9;
+  width: 350px;
+}
+
+.news-box-p1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #647788;
+}
+.news-box-p2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: black;
+}
+.news-box-title {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.follow-box {
+  background-color: #f7f9f9;
+  border-radius: 15px;
+  border: 1px solid #f7f9f9;
+  width: 350px;
+}
+
+.follow-content {
+  font-size: 16px;
+}
+
+.follow-title {
+  color: black;
+  font-weight: 500;
+}
+
+.follow-subtitle {
+  font-size: 0.9rem;
+}
+
+.btn-hardcode {
+  width: 75px;
+  height: 35px;
+  background-color: #1d9bf0;
+  font-size: 0.85rem;
+}
+
+.btn-hardcode:hover {
+  background-color: #1884cd;
+}
+
+.new-tweet-box,
+.tweet-list {
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.title-tweet-box {
+  font-size: 1.2rem;
+}
+
+.tweet-content {
+  font-size: 0.9rem;
+}
+
+.image-hardcode-create {
+  width: 80%;
+}
+
+.image-hardcore-aside {
+  width: 40px;
+  height: 40px;
+}
+
+.home-tweet-profile-img {
+  width: 55%;
+}
+
+.heart-likes,
+.number-likes {
+  color: #f91894;
+}
+
+/* profile styles */
+
 .profile-main-section {
-  height: 45%;
+  height: 45vh;
   padding-bottom: 4rem;
   border-bottom: 1px solid #f3f3f3;
+}
+
+.profile-central-box {
+  height: fit-content;
+  width: 40vw;
+  margin: 0rem 20vw 0rem 26vw;
+  border: 1px solid #f3f3f3;
 }
 
 .profile-banner {
@@ -54,18 +225,45 @@
 
 .profile-photo {
   width: 60%;
+  max-height: 100%;
   position: absolute;
   top: -55%;
 }
 
-@media only screen and (max-width: 1000px) {
-  .register-form-column {
-    padding: 1.2rem 1.8rem 1.2rem 1.8rem !important;
-  }
+.follow-btn-medium {
+  width: 6.5rem;
+  background-color: #1d9bf0;
+  font-size: 0.85rem;
 }
 
-@media only screen and (max-width: 1500px) {
-  .register-form-column {
-    padding: 2rem 1.8rem 2rem 1.8rem !important;
-  }
+.follow-btn-medium:hover {
+  background-color: #1884cd;
+}
+
+/* followers/following styles */
+
+.followlist-central-box {
+  height: fit-content;
+  width: 40vw;
+  margin: 0rem 20vw 0rem 26vw;
+  border: 1px solid #f3f3f3;
+}
+
+.follow-tweet-profile-img {
+  width: 70%;
+}
+
+.follower-name {
+  font-size: 1.4rem;
+}
+
+.follower-username {
+  font-size: 1.1rem;
+}
+
+.link-follow {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
 }

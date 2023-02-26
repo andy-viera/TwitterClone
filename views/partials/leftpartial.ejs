@@ -6,13 +6,13 @@
             <a href="/" class="text-decoration-none text-black"><span><i class="fa-solid fa-house me-3"></i>Home</span></a>
           </div>
           <div class="row mt-4">
-            <a href="/profile" class="text-decoration-none text-black"><span><i class="fa-regular fa-user me-3"></i>Profile</span></a>
+            <a href="/profile/<%= user.username %>" class="text-decoration-none text-black"><span><i class="fa-regular fa-user me-3"></i>Profile</span></a>
           </div>
           <div class="row mt-4">
-            <a class="btn btn-primary btn-home rounded-pill w-100" href="/" role="button">Tweet</a>
+            <a class="btn btn-home text-white rounded-pill w-100" href="/" role="button">Tweet</a>
           </div>
           <div class="row mt-auto mb-4">
-            <a class="btn btn-secondary btn-logout mt-auto rounded-pill w-100" href="/" role="button">Logout</a>
+            <a class="btn btn-secondary btn-logout mt-auto rounded-pill w-100" href="/logout" role="button">Logout</a>
           </div>
       </div>
     </div>

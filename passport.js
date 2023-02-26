@@ -14,7 +14,6 @@ module.exports = (app) => {
       },
       async function (email, password, cb) {
         try {
-          console.log(email, password);
           const user = await User.findOne({ email });
           const passwordIngresado = password;
           const hashAlmacenado = user.password;

@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const formidable = require("formidable");
 const bcrypt = require("bcryptjs");
-const flash = require("express-flash");
 
 function register(req, res) {
   res.render("pages/register", { flash: req.flash() });
@@ -22,7 +21,7 @@ async function store(req, res) {
       req.flash("error", "You are already registered!");
       res.redirect("/register");
     } else {
-      await User.create({
+      const user = await User.create({
         firstname,
         lastname,
         email,
@@ -55,14 +54,14 @@ async function destroy(req, res) {}
 
 // Otros handlers...
 async function showFollowers(req, res) {
-  const id = req.params.id;
-  const userFollowers = await User.findById(id).populate("followers");
+  const username = req.params.username;
+  const userFollowers = await User.findOne({ username }).populate("followers");
   res.render("pages/followers", { userFollowers });
 }
 
 async function showFollowing(req, res) {
-  const id = req.params.id;
-  const userFollowing = await User.findById(id).populate("following");
+  const username = req.params.username;
+  const userFollowing = await User.findOne({ username }).populate("following");
   res.render("pages/following", { userFollowing });
 }
 

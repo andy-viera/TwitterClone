@@ -5,182 +5,47 @@
   </head>
 
   <body>
-    <!--http://localhost:3000/followers/63f8c0cf1a6456da9440185c-->
     <div class="container-fluid">
       <div class="row subContainer">
-        <!--Comienzo partial izquierdo-->
-        <div class="col-4 left-partial">
-          <div class="row">
-            <div class="col-6"></div>
-            <div class="col-5 d-flex flex-column" style="height: 100vh">
-              <div class="row mt-2"><i class="fab fa-twitter twitterSimbol"></i></div>
-              <div class="row mt-4">
-                <span> <i class="fa-solid fa-house"></i><small class="ms-2">Home</small></span>
-              </div>
-              <div class="row mt-4">
-                <span>
-                  <i class="fa-regular fa-user"> </i><small class="ms-2">Profile</small>
-                </span>
-              </div>
-              <div class="row mt-4">
-                <a class="btn btn-primary btn-home" href="/" role="button">Tweet</a>
-              </div>
-              <div class="row mt-auto mb-4">
-                <a class="btn btn-secondary btn-logout mt-auto" href="/" role="button">Logout</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Fin partial izquierdo-->
-        <div class="col-4 central-box overflow-auto">
+        <%- include("../partials/leftpartial") %>
+        <div class="col-7 followlist-central-box">
           <div class="row new-tweet-box">
             <div class="col-1 mt-4">
-              <i class="fa-sharp fa-solid fa-arrow-left"></i>
+              <a href="/profile/<%=userFollowers.username%>" class="text-black"><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
             </div>
             <div class="col-11 mt-2">
               <h1 class="follower-name">
                 <%=userFollowers.firstname%> <%= userFollowers.lastname%>
               </h1>
-              <h2 class="follower-username">@<%= userFollowers.username%></h2>
+              <h2 class="follower-username fw-light text-secondary">@<%= userFollowers.username%></h2>
             </div>
             <div class="col-6 mt-3 text-center mb-3">
-              <a class="link-follow" href="http://">Followers</a>
+              <a class="link-follow" href="/profile/<%=userFollowers.username%>/followers">Followers</a>
             </div>
             <div class="col-6 mt-3 text-center mb-3">
-              <a class="link-follow" href="http://">Following</a>
+              <a class="link-follow" href="/profile/<%=userFollowers.username%>/following">Following</a>
             </div>
           </div>
           <% for (const follower of userFollowers.followers) { %>
-          <div class="row tweet-list mt-3">
-            <div class="col-2">
-              <img src="<%= follower.image %>" alt="" class="img-hardcore" />
+            <div class="row tweet-list mt-3">
+              <div class="col-2 text-center">
+                <img src="<%= follower.image %>" alt="" class="rounded-circle follow-tweet-profile-img" />
+              </div>
+              <div class="col-7">
+                <h4 class="follow-content follow-title"><%= follower.firstname %></h4>
+                <h4 class="follow-content follow-subtitle text-secondary fw-light">@<%= follower.username %></h4>
+                <p class="tweet-content"></p>
+              </div>
+              <div class="col-2">
+                <button class="btn follow-btn-medium text-white rounded-pill mt-2 ms-3" href="/" role="button">
+                  Follow
+                </button>
+              </div>
             </div>
-            <div class="col-7">
-              <h4 class="follow-content follow-title"><%= follower.firstname %></h4>
-              <h4 class="follow-content follow-subtitle">@<%= follower.username %></h4>
-              <p class="tweet-content"></p>
-            </div>
-            <div class="col-2">
-              <button class="btn btn-primary btn-hardcore mt-2 ms-3" href="/" role="button">
-                Follow
-              </button>
-            </div>
-          </div>
           <% } %>
         </div>
 
-        <!--Comienzo partial derecho-->
-        <div class="col-4 right-partial">
-          <div class="row">
-            <div class="col-8 news-box ms-4 mt-3">
-              <h3 class="news-box-title mt-3">What's happening</h3>
-              <div class="flex-column">
-                <small class="d-block mt-3 news-box-p1">Programming - Trending</small>
-                <small class="d-block news-box-p2">#MongoVsSequelize</small>
-                <small class="d-block news-box-p1">97.5K Tweets</small>
-              </div>
-              <div>
-                <small class="d-block mt-3 news-box-p1">Entertainment - Trending</small>
-                <small class="d-block news-box-p2">#StarWars</small>
-                <small class="d-block news-box-p1">97.5K Tweets</small>
-              </div>
-              <div class="mb-3">
-                <small class="d-block mt-3 news-box-p1">News - Trending</small>
-                <small class="d-block news-box-p2">#LifeInMars</small>
-                <small class="d-block news-box-p1">97.5K Tweets</small>
-              </div>
-            </div>
-
-            <div class="col-8 follow-box ms-4 mt-3">
-              <h3 class="news-box-title mt-3">Who to follow</h3>
-              <div class="row mt-2">
-                <div class="col-2">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    alt=""
-                    class="img-hardcore"
-                  />
-                </div>
-                <div class="col-6 ms-2">
-                  <h4 class="follow-content follow-title mb-0 mt-1">Hack Academy</h4>
-                  <h4 class="follow-content follow-subtitle mt-0">@HackAcademyDev</h4>
-                </div>
-                <div class="col-3">
-                  <button class="btn btn-primary btn-hardcore" href="/" role="button">
-                    Follow
-                  </button>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-2">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    alt=""
-                    class="img-hardcore"
-                  />
-                </div>
-                <div class="col-6 ms-2">
-                  <h4 class="follow-content follow-title mb-0 mt-1">Java Script</h4>
-                  <h4 class="follow-content follow-subtitle mt-0">@JavaScript</h4>
-                </div>
-                <div class="col-3">
-                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-2">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    alt=""
-                    class="img-hardcore"
-                  />
-                </div>
-                <div class="col-6 ms-2">
-                  <h4 class="follow-content follow-title mb-0 mt-1">MongoDB</h4>
-                  <h4 class="follow-content follow-subtitle mt-0">@MongoDB</h4>
-                </div>
-                <div class="col-3">
-                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-2">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    alt=""
-                    class="img-hardcore"
-                  />
-                </div>
-                <div class="col-6 ms-2">
-                  <h4 class="follow-content follow-title mb-0 mt-1">NodeJs</h4>
-                  <h4 class="follow-content follow-subtitle mt-0">@NodeJs</h4>
-                </div>
-                <div class="col-3">
-                  <a class="btn btn-primary btn-hardcore text-center" href="/" role="button"
-                    >Follow</a
-                  >
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-2">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    alt=""
-                    class="img-hardcore"
-                  />
-                </div>
-                <div class="col-6 ms-2 mb-3">
-                  <h4 class="follow-content follow-title mb-0 mt-1">MDN Web Docs</h4>
-                  <h4 class="follow-content follow-subtitle mt-0">@MDN Web Docs</h4>
-                </div>
-                <div class="col-3">
-                  <a class="btn btn-primary btn-hardcore" href="/" role="button">Follow</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Fin partial derecho-->
+        <%- include("../partials/rigthpartial") %>
       </div>
     </div>
 
