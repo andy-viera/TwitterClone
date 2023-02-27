@@ -5,18 +5,18 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
 faker.locale = "en";
-
 module.exports = async () => {
   const users = [];
-
   for (let i = 0; i < 10; i++) {
+    const firstname = faker.name.firstName();
+    const lastname = faker.name.lastName();
     users.push(
       new User({
-        firstname: faker.name.firstName(),
-        lastname: faker.name.lastName(),
-        username: faker.internet.userName(),
+        firstname,
+        lastname,
+        username: faker.internet.userName(firstname, lastname),
         password: await bcrypt.hash("1234", 10),
-        email: faker.internet.email(),
+        email: faker.internet.exampleEmail(firstname, lastname),
         biography: faker.lorem.paragraph(),
         image: faker.image.avatar(),
       }),
