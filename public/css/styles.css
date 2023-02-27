@@ -72,6 +72,19 @@ body {
   border-radius: 15px;
 }
 
+.btn-logout-md {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+  border-radius: 50%;
+}
+.btn-home-md {
+  background-color: #1d9bf0;
+  color: white;
+  border-color: #1d9bf0;
+  border-radius: 50%;
+}
+
 .btn-logout:hover {
   background-color: #b82736;
 }
@@ -279,4 +292,24 @@ body {
 .active-section-border-tweet {
   border-bottom: #1d9bf0 3.5px solid;
   width: 24%;
+}
+
+/* Responsive */
+
+@media (min-width: 992px) {
+  .responsive-lg {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .responsive-md {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-sd {
+    display: none;
+  }
 }
