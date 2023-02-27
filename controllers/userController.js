@@ -16,9 +16,10 @@ async function store(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     const { firstname, lastname, email, username, password } = fields;
-    const existingUser = await User.findOne({ email });
+    const existingEmail = await User.findOne({ email });
+    const existingUsername = await User.findOne({ username });
 
-    if (existingUser) {
+    if (existingUsername || existingEmail) {
       req.flash("error", "You are already registered!");
       res.redirect("/register");
     } else {

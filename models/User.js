@@ -3,9 +3,17 @@ const { mongoose, Schema } = require("../db");
 const userSchema = new Schema({
   firstname: String,
   lastname: String,
-  username: String,
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   password: String,
-  email: String,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   biography: String,
   image: String,
   tweetlist: [
