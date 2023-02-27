@@ -2,28 +2,31 @@
     <div class="row">
       <div class="col-md-4 col-3"></div>
       <div class="col-md-6 col-8 d-flex flex-column" style="height: 100vh">
-          <div class="row mt-2 mb-1"><i class="fab fa-twitter twitterSymbol fs-4"></i></div>
+          <div class="row mt-2 mb-1 responsive-md"><i class="fab fa-twitter twitterSymbol fs-4 "></i></div>
+          <div class="row mt-2 mb-1 icon-responsive responsive-lg "><i class="fab fa-twitter twitterSymbol fs-4 "></i></div>
           <div class="row mt-4">
             <a href="/" class="text-decoration-none text-black home-left-partial responsive-md"><span><i class="fa-solid fa-house me-3 "></i>Home</span></a>
-            <a href="/" class="text-decoration-none text-black responsive-lg"><span><i class="fa-solid fa-house me-3 "></i></span></a>
+            <a href="/" class="icon-responsive ms-2 text-decoration-none text-black responsive-lg"><span><i class="fa-solid fa-house me-3 "></i></span></a>
           </div>
           <div class="row mt-4">
             <a href="/profile/<%= user.username %>" class="text-decoration-none text-black profile-left-partial responsive-md"><span><i class="fa-regular fa-user me-3"></i>Profile</span></a>
-            <a href="/profile/<%= user.username %>" class="text-decoration-none text-black responsive-lg"><span><i class="fa-regular fa-user me-3"></i></span></a>          
+            <a href="/profile/<%= user.username %>" class="icon-responsive ms-2 text-decoration-none text-black responsive-lg"><span><i class="fa-regular fa-user me-3"></i></span></a>          
           </div>
           <div class="row mt-4">
             <div>
             <a class="btn btn-home text-white rounded-pill w-100 responsive-md" href="/" role="button">Tweet</a>
           </div>
-            <div>
+            <div class="icon-responsive">
               
-            <a class="btn btn-secondary btn-home-md responsive-lg" href="/" role="button"><i class="fa-sharp fa-solid fa-feather-pointed"></i></a>
+            <a class=" btn btn-secondary btn-home-md responsive-lg" href="/" role="button"><i class="fa-sharp fa-solid fa-feather-pointed"></i></a>
           </div>
           </div>
           <div class="row mt-auto mb-4">
-            <div class="col-12">
+            <div class="col-12 mb-4">
             <a class="btn btn-secondary btn-logout mt-auto rounded-pill w-100 responsive-md" href="/logout" role="button">Logout</a>
-            <a class="btn btn-secondary btn-logout-md mt-auto   responsive-lg" href="/logout" role="button"><i class="fa-solid fa-right-from-bracket"></i></a>
+          </div>
+          <div class="col-12 mb-4 icon-responsive">
+            <a class="btn btn-secondary btn-logout-md mt-auto responsive-lg" href="/logout" role="button"><i class="fa-solid fa-right-from-bracket"></i></a>
           </div>
         </div>
       </div>
