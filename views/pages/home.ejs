@@ -14,25 +14,25 @@
           </div>
           <div class="row tweet-list">
             <div class="col-2 text-center">
-              <img
-              <% if (user.image.includes("http")) {%>
-                src="<%= user.image %>"
-                <% } else {%>
-                  src="/img/<%= user.image %>"
-                  <% } %>
-                alt=""
-                class="rounded-circle image-hardcode-create"
-              />
+              <a href="/profile/<%= user.username %>">
+                <img
+                <% if (user.image.includes("http")) {%>
+                  src="<%= user.image %>"
+                  <% } else {%>
+                    src="/img/<%= user.image %>"
+                    <% } %>
+                  alt=""
+                  class="rounded-circle image-hardcode-create"
+                />
+            </a>
             </div>
             <div class="col-8">
               <textarea
-                name=""
-                id=""
                 cols="40"
                 rows="2"
                 style="border: none"
                 placeholder="What's happening?"
-                class="mt-2"
+                class="mt-2 home-placeholder"
               ></textarea>
             </div>
             <div class="col-12 mt-3 d-flex">
@@ -55,7 +55,15 @@
                       <%= tweet.author.firstname%> <%= tweet.author.lastname %>
                     </a>
                   </h4>
-                  <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= tweet.author.username%></h4>
+                  <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= tweet.author.username%> • 
+                    <% const timeDiffInHours = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60 * 60)); %>
+                    
+                    <%  if (timeDiffInHours <= 24) { %>
+                     <%=` ${timeDiffInHours} h`; %>
+                    <%  } else {  %>
+                    <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
+                    <% } %>
+                  </h4>
                   <p class="tweet-content"><%= tweet.content %></p>                  
                   <section class="mb-3">
                     <% if(tweet.likes.includes(user._id)) {%>

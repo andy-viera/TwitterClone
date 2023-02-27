@@ -2,13 +2,22 @@ const Tweet = require("../models/Tweet");
 const User = require("../models/User");
 
 async function showHome(req, res) {
-  const tweets = await Tweet.find().populate("author");
+  const currentUser = req.user;
+  const following = currentUser.following;
+
+  const tweets = await Tweet.find({ author: { $in: following } })
+    .sort({ createdAt: -1 })
+    .populate("author");
+
   res.render("pages/home", { tweets });
 }
 
 async function showProfile(req, res) {
   const username = req.params.username;
-  const userData = await User.findOne({ username }).populate("tweetlist");
+  const userData = await User.findOne({ username }).populate({
+    path: "tweetlist",
+    options: { sort: { createdAt: "desc" } },
+  });
   res.render("pages/profile", { userData });
 }
 

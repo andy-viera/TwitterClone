@@ -30,12 +30,15 @@
           <% for (const followed of userFollowing.following) { %>
             <div class="row tweet-list mt-3">
               <div class="col-2 text-center">
-                <img src="<%= followed.image %>" alt="" class="rounded-circle follow-tweet-profile-img" />
+                <a href="/profile/<%= followed.username %>">
+                  <img src="<%= followed.image %>" alt="" class="rounded-circle follow-tweet-profile-img" />
+                </a>
               </div>
               <div class="col-7">
-                <h4 class="follow-content follow-title"><%= followed.firstname %></h4>
-                <h4 class="follow-content follow-subtitle text-secondary fw-light">@<%= followed.username %></h4>
-                <p class="tweet-content"></p>
+                <a href="/profile/<%= followed.username %>" class="text-decoration-none">
+                  <h4 class="follow-content follow-title"><%= followed.firstname %></h4>
+                  <h4 class="follow-content follow-subtitle text-secondary fw-light">@<%= followed.username %></h4>
+                </a>
               </div>
               <div class="col-2">
                   <a href="/<%= followed._id %>/follow" class="text-decoration-none text-black btn following-btn-medium text-black rounded-pill mt-2 ms-3">

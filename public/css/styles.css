@@ -52,11 +52,31 @@
 
 body {
   background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-.twitterSimbol {
-  color: #1d9bf0;
+.home-placeholder {
+  font-size: 1.3rem;
+  resize: none;
 }
+
+.home-placeholder:focus {
+  outline: none;
+}
+
+.twitterSymbol {
+  color: #1d9bf0;
+  font-size: 1.8rem !important;
+}
+
+.home-left-partial {
+  font-size: 1.1rem;
+}
+
+.profile-left-partial {
+  font-size: 1.1rem;
+}
+
 .btn-home {
   background-color: #1d9bf0;
 }
@@ -104,7 +124,6 @@ body {
 
 .central-box {
   height: fit-content;
-
   border: 1px solid #f3f3f3;
 }
 
@@ -114,7 +133,7 @@ body {
   padding: 0.8rem 0rem 0.5rem 0rem;
   margin-bottom: 1rem;
   width: 100%;
-  height: 7vh;
+  height: 8vh;
   border-bottom: 1px solid #f3f3f3;
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -231,6 +250,7 @@ body {
 
 .profile-photo {
   width: 60%;
+  border: #ffffff 6px solid;
   max-height: 100%;
   position: absolute;
   top: -45%;
@@ -251,6 +271,10 @@ body {
   background-color: #ffffff;
   border: #e8e8e8 1px solid;
   font-size: 0.98rem;
+}
+
+.following-btn-medium:hover {
+  background-color: #e5e5e5;
 }
 
 /* followers/following styles */

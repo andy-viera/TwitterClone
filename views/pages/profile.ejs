@@ -34,7 +34,15 @@
                     </div>
                     <div class="col-7 pt-3 profile-info-subcontainer-right">
                         <div class="d-flex flex-column align-items-end h-100">
-                            <a class="btn follow-btn-medium text-white rounded-pill" href="#" role="button">Follow</a>
+                          <% if(user.email === userData.email) {%>
+                            <a class="btn following-btn-medium text-black rounded-pill" href="#" role="button">Edit</a>
+                            <% } else { %>
+                              <% if(user.following.includes(userData._id)) {%>
+                                  <a class="btn following-btn-medium text-black rounded-pill" href="/<%=userData._id%>/follow" role="button">Following</a>
+                              <% } else {%>
+                                   <a class="btn follow-btn-medium text-white rounded-pill" href="/<%=userData._id%>/follow" role="button">Follow</a>
+                                <% } %>
+                              <% } %>
                             <div class="mt-auto pb-5">
                                 <a class="text-black text-decoration-none me-3 small-text" href="/profile/<%= userData.username %>/following"><span class="fw-bold me-2"><%= userData.following.length %></span> <span class="text-secondary">Following</span></a> <a class="text-black text-decoration-none small-text" href="/profile/<%= userData.username %>/followers"><span class="fw-bold me-2"><%= userData.followers.length %></span><span class="text-secondary">Followers</span></a>
                             </div>
@@ -52,7 +60,15 @@
                   <h4 class="d-inline follow-content follow-title">
                     <%= userData.firstname%> <%= userData.lastname %>
                   </h4>
-                  <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= userData.username%></h4>
+                  <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= userData.username%> • 
+                    <% const timeDiffInHours = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60 * 60)); %>
+                    
+                    <%  if (timeDiffInHours <= 24) { %>
+                     <%=` ${timeDiffInHours} h`; %>
+                    <%  } else {  %>
+                    <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
+                    <% } %>
+                  </h4>
                   <p class="tweet-content"><%= tweet.content %></p>
                   <section class="mb-3">
                     <% if(tweet.likes.includes(user._id)) {%>

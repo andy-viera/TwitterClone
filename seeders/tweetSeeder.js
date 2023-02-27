@@ -17,10 +17,16 @@ module.exports = async () => {
 
     const randomUser = await User.findOne().skip(faker.datatype.number({ min: 0, max: 9 }));
 
+    const timestamp = faker.date.between(
+      new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+      new Date(),
+    );
+
     const tweet = new Tweet({
       content: faker.lorem.paragraphs(faker.datatype.number({ min: 1, max: 4 })),
       author: randomUser,
       likes: randomUserlikesArray,
+      createdAt: timestamp,
     });
 
     tweets.push(tweet);
