@@ -41,9 +41,15 @@
                 </a>
               </div>
               <div class="col-2">
-                  <a href="/<%= followed._id %>/follow" class="text-decoration-none text-black btn following-btn-medium text-black rounded-pill mt-2 ms-3">
-                    Following
-                  </a>
+                <% if(user.following.includes(followed._id)) {%>
+                    <a href="/<%= followed._id %>/follow" class="text-decoration-none btn following-btn-medium text-black rounded-pill mt-2 ms-3">
+                      Following
+                    </a>
+                <% } else {%>
+                    <a href="/<%= followed._id %>/follow" class="text-decoration-none btn follow-btn-medium text-white rounded-pill mt-2 ms-3">
+                      Follow
+                    </a>
+                  <% } %>
               </div>
             </div>
           <% } %>

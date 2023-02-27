@@ -8,7 +8,7 @@
   <body>
       <div class="row gx-5">
         <%- include("../partials/leftpartial") %>
-        <div class="col-md-5 col-7 central-box">
+        <div class="col-md-5 col-7 central-box px-0">
           <div class="home-central-navbar">
             <h1 class="title-tweet-box">Home</h1>
           </div>
@@ -26,20 +26,21 @@
                 />
             </a>
             </div>
-            <div class="col-8">
-              <textarea
-                cols="40"
-                rows="2"
-                style="border: none"
-                placeholder="What's happening?"
-                class="mt-2 home-placeholder"
-              ></textarea>
-            </div>
-            <div class="col-12 mt-3 d-flex">
-              <button class="btn btn-hardcode text-white rounded-pill mb-3 ms-auto" href="/" role="button">
-                Tweet
-              </button>
-            </div>
+            <form action="/create-tweet" method="POST" class="col-10">
+                <textarea
+                  cols="40"
+                  rows="2"
+                  name="tweetContent"
+                  style="border: none"
+                  placeholder="What's happening?"
+                  class="mt-2 home-placeholder"
+                ></textarea>
+              <div class="mt-3 d-flex">
+                <button class="btn btn-hardcode text-white rounded-pill mb-3 ms-auto" href="/" role="button">
+                  Tweet
+                </button>
+              </div>
+            </form>
           </div>
           <% for (const tweet of tweets) { %>
               <div class="row tweet-list mt-3 gx-0">
@@ -56,13 +57,20 @@
                     </a>
                   </h4>
                   <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= tweet.author.username%> • 
-                    <% const timeDiffInHours = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60 * 60)); %>
+                    <% const timeDiffInMinutes = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60)); %>
+                    <% if (timeDiffInMinutes < 1) { %>
+                        Just Now
+                    <% } else if (timeDiffInMinutes < 60) { %>
+                        <%= `${timeDiffInMinutes}m` %>
+                    <% } else { 
+                        const timeDiffInHours = Math.round(timeDiffInMinutes / 60);
+                        if (timeDiffInHours >= 1 && timeDiffInHours <= 24) { %>
+                            <%= `${timeDiffInHours}h` %>
+                        <% } else { %>
+                            <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
+                        <% }
+                    } %>
                     
-                    <%  if (timeDiffInHours <= 24) { %>
-                     <%=` ${timeDiffInHours} h`; %>
-                    <%  } else {  %>
-                    <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
-                    <% } %>
                   </h4>
                   <p class="tweet-content"><%= tweet.content %></p>                  
                   <section class="mb-3">
@@ -81,6 +89,9 @@
                 </div>
               </div>
           <% } %>
+          <% if(tweets.length === 0) {%>
+            <div class="text-center rounded w-75 py-3 my-3 mx-auto tweetlist-error"><h4 class="fs-6  mb-0 text-white">Start following people to see their tweets!</h3></div>
+          <% }%>
         </div>
 
         <%- include("../partials/rigthpartial") %>

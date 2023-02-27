@@ -130,10 +130,11 @@ body {
 .home-central-navbar {
   position: sticky;
   top: 0;
-  padding: 0.8rem 0rem 0.5rem 0rem;
+  padding: 0.8rem 1rem 0.5rem 1rem;
   margin-bottom: 1rem;
   width: 100%;
   height: 8vh;
+  background-color: #f7f9f9ae;
   border-bottom: 1px solid #f3f3f3;
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -195,10 +196,15 @@ body {
 .new-tweet-box,
 .tweet-list {
   border-bottom: 1px solid #f3f3f3;
+  padding: 0 0.8rem 0 0.8rem;
 }
 
 .title-tweet-box {
   font-size: 1.2rem;
+}
+
+.tweetlist-error {
+  background-color: #dc3546a3;
 }
 
 .tweet-content {

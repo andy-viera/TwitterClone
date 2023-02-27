@@ -61,31 +61,55 @@
                     <%= userData.firstname%> <%= userData.lastname %>
                   </h4>
                   <h4 class="d-inline follow-subtitle text-secondary fw-light">@<%= userData.username%> • 
-                    <% const timeDiffInHours = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60 * 60)); %>
-                    
-                    <%  if (timeDiffInHours <= 24) { %>
-                     <%=` ${timeDiffInHours} h`; %>
-                    <%  } else {  %>
-                    <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
-                    <% } %>
+                    <% const timeDiffInMinutes = Math.round((Date.now() - tweet.createdAt.getTime()) / (1000 * 60)); %>
+                    <% if (timeDiffInMinutes < 1) { %>
+                        Just Now
+                    <% } else if (timeDiffInMinutes < 60) { %>
+                        <%= `${timeDiffInMinutes}m` %>
+                    <% } else { 
+                        const timeDiffInHours = Math.round(timeDiffInMinutes / 60);
+                        if (timeDiffInHours >= 1 && timeDiffInHours <= 24) { %>
+                            <%= `${timeDiffInHours}h` %>
+                        <% } else { %>
+                            <%= tweet.createdAt.toLocaleString("default", { month: "short", day: "numeric" }); %>
+                        <% }
+                    } %>
                   </h4>
                   <p class="tweet-content"><%= tweet.content %></p>
-                  <section class="mb-3">
-                    <% if(tweet.likes.includes(user._id)) {%>
-                      <a href="/<%= tweet._id %>/like" class="text-decoration-none text-black">
-                        <i class="bi bi-heart-fill heart-likes"></i>
-                        <small class="ms-2 number-likes"><%= tweet.likes.length %></small>
-                      </a>
-                      <% } else {%>
+                  <section class="mb-3 d-flex justify-content-between">
+                    <div>
+                      <% if(tweet.likes.includes(user._id)) {%>
                         <a href="/<%= tweet._id %>/like" class="text-decoration-none text-black">
-                          <i class="bi bi-heart"></i>
-                          <small class="ms-2"><%= tweet.likes.length %></small>
+                          <i class="bi bi-heart-fill heart-likes"></i>
+                          <small class="ms-2 number-likes"><%= tweet.likes.length %></small>
                         </a>
-                        <% } %>
+                        <% } else {%>
+                          <a href="/<%= tweet._id %>/like" class="text-decoration-none text-black">
+                            <i class="bi bi-heart"></i>
+                            <small class="ms-2"><%= tweet.likes.length %></small>
+                          </a>
+                          <% } %>
+                    </div>
+                    <% if(user.email === userData.email) {%>
+                      <div>
+                        <form action="/delete-tweet/<%= tweet._id %>?_method=DELETE" method="POST">
+                          <button 
+                          type="submit"
+                          name="submitBtn"
+                          class="btn"
+                          >
+                          <i class="bi bi-trash3-fill text-danger"></i>
+                          </button>
+                        </form>
+                      </div>
+                    <% }%>
                   </section>
                 </div>
               </div>
            <% } %>
+           <% if(userData.tweetlist.length === 0) {%>
+            <div class="text-center rounded w-75 py-3 my-3 mx-auto tweetlist-error"><h4 class="fs-6  mb-0 text-white">Start writing tweets and find them here!</h3></div>
+           <% }%>
         </div>
           <%- include("../partials/rigthpartial") %>
 

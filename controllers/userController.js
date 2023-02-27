@@ -1,5 +1,4 @@
 const User = require("../models/User");
-const Tweet = require("../models/Tweet");
 const formidable = require("formidable");
 const bcrypt = require("bcryptjs");
 
@@ -34,23 +33,6 @@ async function store(req, res) {
       req.login(user, () => res.redirect("/"));
     }
   });
-}
-
-async function like(req, res) {
-  const tweetId = req.params.tweetid;
-  const loggedUserId = req.user._id;
-  const tweet = await Tweet.findById(tweetId);
-  const likes = tweet.likes;
-  const likeIndex = likes.indexOf(loggedUserId);
-  if (likeIndex === -1) {
-    // loggedUserId is not in the likes array, so add it
-    likes.push(loggedUserId);
-  } else {
-    // loggedUserId is in the likes array, so remove it
-    likes.splice(likeIndex, 1);
-  }
-  await tweet.save();
-  res.redirect(req.headers.referer || "/");
 }
 
 async function follow(req, res) {
@@ -90,7 +72,6 @@ async function showFollowing(req, res) {
 module.exports = {
   register,
   store,
-  like,
   follow,
   showFollowers,
   showFollowing,
